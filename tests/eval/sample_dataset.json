@@ -1,0 +1,40 @@
+{
+  "name": "agentic-rag-sample",
+  "cases": [
+    {
+      "id": "c-001",
+      "question": "What is LangGraph and how does it model agents?",
+      "ground_truth": "LangGraph models agents as stateful finite-state machines with nodes for reasoning steps and conditional edges for control flow.",
+      "relevant_chunk_ids": [],
+      "tags": ["framework"]
+    },
+    {
+      "id": "c-002",
+      "question": "Explain reciprocal rank fusion and when to use it.",
+      "ground_truth": "Reciprocal rank fusion combines multiple rankings using 1/(k+rank), giving a score-free fusion that works well across heterogeneous retrievers.",
+      "relevant_chunk_ids": [],
+      "tags": ["retrieval", "fusion"]
+    },
+    {
+      "id": "c-003",
+      "question": "Why do cross-encoders outperform pure bi-encoder retrieval for the final ranking?",
+      "ground_truth": "Cross-encoders read the query and passage jointly with cross-attention, which produces much higher relevance accuracy at the cost of quadratic compute, so they are used for a small rerank set.",
+      "relevant_chunk_ids": [],
+      "tags": ["retrieval", "rerank"]
+    },
+    {
+      "id": "c-004",
+      "question": "What is the Model Context Protocol used for?",
+      "ground_truth": "MCP is an open protocol for exposing tools and data sources to LLM clients in a standard way.",
+      "relevant_chunk_ids": [],
+      "tags": ["mcp"]
+    },
+    {
+      "id": "c-005",
+      "question": "What does a hybrid BM25 + dense retriever buy you?",
+      "ground_truth": "Hybrid retrieval combines lexical exact-match with semantic similarity, improving recall on rare tokens and acronyms that pure vector search struggles with.",
+      "relevant_chunk_ids": [],
+      "tags": ["retrieval"]
+    }
+  ]
+}
