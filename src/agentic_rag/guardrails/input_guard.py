@@ -101,6 +101,7 @@ class InputGuard:
             (_CC_RE, "<CC>"),
             (_PHONE_RE, "<PHONE>"),
         ):
+
             def _sub(match: re.Match[str], tag: str = tag) -> str:
                 redactions.append(f"{tag}:{match.group(0)[:4]}***")
                 return tag

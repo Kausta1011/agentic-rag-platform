@@ -64,9 +64,7 @@ class OutputGuard:
         context: Iterable[ScoredChunk] | None = None,
     ) -> OutputVerdict:
         if not answer.strip():
-            raise GuardrailViolationError(
-                "empty answer", rule="empty_answer", stage="output"
-            )
+            raise GuardrailViolationError("empty answer", rule="empty_answer", stage="output")
 
         if context is None:
             # Nothing to ground against; pass with no score.
@@ -77,7 +75,7 @@ class OutputGuard:
             f"QUESTION:\n{question}\n\n"
             f"CONTEXT:\n{ctx_text}\n\n"
             f"ANSWER:\n{answer}\n\n"
-            'Return JSON only.'
+            "Return JSON only."
         )
         try:
             resp = await self._llm.generate(

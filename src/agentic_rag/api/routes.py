@@ -49,7 +49,9 @@ async def query(
     try:
         final: dict[str, Any] = await service.graph.ainvoke(initial)  # type: ignore[attr-defined]
     except AgenticRAGError as exc:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=exc.to_dict()) from exc
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=exc.to_dict()
+        ) from exc
 
     # ---- output guardrail ----------------------------------------------
     out = service.output_guard

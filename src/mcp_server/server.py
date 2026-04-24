@@ -33,9 +33,7 @@ def build_server():  # type: ignore[no-untyped-def]
         from mcp.server import Server  # type: ignore[import-not-found]
         from mcp.types import TextContent, Tool  # type: ignore[import-not-found]
     except ImportError as exc:  # pragma: no cover
-        raise RuntimeError(
-            "`mcp` package not installed; `pip install mcp`"
-        ) from exc
+        raise RuntimeError("`mcp` package not installed; `pip install mcp`") from exc
 
     settings = get_settings()
     server: Server = Server(settings.mcp_server_name)

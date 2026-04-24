@@ -119,9 +119,7 @@ class HybridRetriever(BaseRetriever):
             src = "+".join(
                 filter(None, [d and d.source_retriever, lex_sc and lex_sc.source_retriever])
             )
-            fused.append(
-                ScoredChunk(chunk=chunk, retrieval_score=score, source_retriever=src)
-            )
+            fused.append(ScoredChunk(chunk=chunk, retrieval_score=score, source_retriever=src))
         return sorted(fused, key=lambda s: s.retrieval_score, reverse=True)
 
 

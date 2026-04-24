@@ -86,9 +86,7 @@ class EvalRunner:
             faith = await faithfulness(
                 self._llm, question=case.question, answer=answer, context=reranked
             )
-            rel = await answer_relevance(
-                self._embeddings, question=case.question, answer=answer
-            )
+            rel = await answer_relevance(self._embeddings, question=case.question, answer=answer)
 
             return EvalResult(
                 case_id=case.id,

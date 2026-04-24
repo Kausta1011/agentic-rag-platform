@@ -32,7 +32,7 @@ class AgentState(TypedDict, total=False):
     trace_id: str
 
     # --- inputs -----------------------------------------------------------
-    question: str            # original user question
+    question: str  # original user question
     rewritten_question: str  # post-rewrite, the query actually retrieved with
 
     # --- routing ----------------------------------------------------------
@@ -44,8 +44,8 @@ class AgentState(TypedDict, total=False):
     web_results: list[dict]  # raw search-engine hits (if routed to web)
 
     # --- grading / reflection --------------------------------------------
-    grade: str                  # "relevant" / "irrelevant"
-    reflection_step: int        # incremented each time we loop back
+    grade: str  # "relevant" / "irrelevant"
+    reflection_step: int  # incremented each time we loop back
     reflection_notes: list[str]
 
     # --- output -----------------------------------------------------------

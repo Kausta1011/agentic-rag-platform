@@ -55,7 +55,9 @@ def get_service() -> Service:
             max_length=4000,
             redact_pii=True,
             block_injection=True,
-        ) if settings.enable_input_guard else InputGuard(redact_pii=False, block_injection=False),
+        )
+        if settings.enable_input_guard
+        else InputGuard(redact_pii=False, block_injection=False),
         output_guard=OutputGuard(llm, min_faithfulness=settings.min_faithfulness_score)
         if settings.enable_output_guard
         else OutputGuard(llm, min_faithfulness=0.0),

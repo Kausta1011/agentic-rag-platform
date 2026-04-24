@@ -75,7 +75,11 @@ class ChromaVectorStore(BaseRetriever):
                 {
                     "document_id": c.document_id,
                     "ordinal": c.ordinal,
-                    **{k: v for k, v in c.metadata.items() if isinstance(v, (str, int, float, bool))},
+                    **{
+                        k: v
+                        for k, v in c.metadata.items()
+                        if isinstance(v, (str, int, float, bool))
+                    },
                 }
                 for c in chunks
             ],

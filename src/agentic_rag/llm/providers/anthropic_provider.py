@@ -51,9 +51,7 @@ class AnthropicProvider(BaseLLMProvider):
             raise LLMProviderError(f"anthropic generate failed: {exc}") from exc
 
         # Anthropic returns a list of content blocks; concatenate text blocks.
-        text = "".join(
-            getattr(block, "text", "") for block in resp.content if block.type == "text"
-        )
+        text = "".join(getattr(block, "text", "") for block in resp.content if block.type == "text")
         return LLMResponse(
             text=text,
             input_tokens=resp.usage.input_tokens if resp.usage else 0,

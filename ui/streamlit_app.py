@@ -92,9 +92,7 @@ def _render_answer(resp: dict[str, Any]) -> None:
     }
     with st.expander("Details"):
         st.json(meta)
-    st.session_state["history"].append(
-        {"role": "assistant", "content": answer, "meta": meta}
-    )
+    st.session_state["history"].append({"role": "assistant", "content": answer, "meta": meta})
 
 
 def _post_json(url: str, body: dict) -> dict[str, Any]:

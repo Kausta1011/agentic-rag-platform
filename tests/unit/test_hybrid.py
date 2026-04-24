@@ -32,7 +32,9 @@ def test_hybrid_retriever_composes_child_results():
         a = BM25Retriever()
         b = BM25Retriever()
         await a.add([Chunk(id="a::1", document_id="a", ordinal=0, content="apple banana cherry")])
-        await b.add([Chunk(id="b::1", document_id="b", ordinal=0, content="apple durian elderberry")])
+        await b.add(
+            [Chunk(id="b::1", document_id="b", ordinal=0, content="apple durian elderberry")]
+        )
 
         hybrid = HybridRetriever([a, b], strategy="weighted", alpha=0.5)
         hits = await hybrid.retrieve("apple", top_k=5)

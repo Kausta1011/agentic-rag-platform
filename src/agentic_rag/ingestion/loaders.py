@@ -83,9 +83,7 @@ class PDFLoader(BaseLoader):
 
         def _extract() -> str:
             reader = PdfReader(str(self.path))
-            return "\n\n".join(
-                (page.extract_text() or "").strip() for page in reader.pages
-            )
+            return "\n\n".join((page.extract_text() or "").strip() for page in reader.pages)
 
         try:
             content = await asyncio.to_thread(_extract)

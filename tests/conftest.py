@@ -23,21 +23,34 @@ class FakeLLM(BaseLLMProvider):
         self.prompts: list[str] = []
 
     async def generate(
-        self, prompt: str, *, system: str | None = None,
-        temperature: float = 0.0, max_tokens: int = 1024, stop=None,
+        self,
+        prompt: str,
+        *,
+        system: str | None = None,
+        temperature: float = 0.0,
+        max_tokens: int = 1024,
+        stop=None,
     ) -> LLMResponse:
         self.prompts.append(prompt)
         text = self.canned.pop(0) if self.canned else "ok"
         return LLMResponse(
-            text=text, input_tokens=len(prompt.split()),
-            output_tokens=len(text.split()), model="fake",
+            text=text,
+            input_tokens=len(prompt.split()),
+            output_tokens=len(text.split()),
+            model="fake",
         )
 
     async def stream(
-        self, prompt: str, *, system: str | None = None,
-        temperature: float = 0.0, max_tokens: int = 1024,
+        self,
+        prompt: str,
+        *,
+        system: str | None = None,
+        temperature: float = 0.0,
+        max_tokens: int = 1024,
     ) -> AsyncIterator[str]:
-        resp = await self.generate(prompt, system=system, temperature=temperature, max_tokens=max_tokens)
+        resp = await self.generate(
+            prompt, system=system, temperature=temperature, max_tokens=max_tokens
+        )
         for tok in resp.text.split():
             yield tok + " "
 

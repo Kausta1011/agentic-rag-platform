@@ -66,9 +66,7 @@ def context_precision(
     return hits / len(retrieved)
 
 
-def context_recall(
-    retrieved: Sequence[ScoredChunk], relevant_ids: Sequence[str]
-) -> float | None:
+def context_recall(retrieved: Sequence[ScoredChunk], relevant_ids: Sequence[str]) -> float | None:
     if not relevant_ids:
         return None
     retrieved_set = {sc.chunk.id for sc in retrieved}

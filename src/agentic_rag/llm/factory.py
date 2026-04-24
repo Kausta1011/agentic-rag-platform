@@ -39,6 +39,7 @@ class LLMFactory:
                 self._settings.openai_api_key, env_var="OPENAI_API_KEY", provider="openai"
             )
             from agentic_rag.llm.providers.openai_provider import OpenAIProvider
+
             return OpenAIProvider(
                 api_key=key,
                 model=self._settings.openai_model,
@@ -52,6 +53,7 @@ class LLMFactory:
                 provider="anthropic",
             )
             from agentic_rag.llm.providers.anthropic_provider import AnthropicProvider
+
             return AnthropicProvider(api_key=key, model=self._settings.anthropic_model)
 
         raise ConfigurationError(f"Unknown LLM_PROVIDER: {provider!r}")
@@ -65,6 +67,7 @@ class LLMFactory:
                 provider="openai-embeddings",
             )
             from agentic_rag.llm.providers.openai_provider import OpenAIEmbeddings
+
             return OpenAIEmbeddings(
                 api_key=key,
                 model=self._settings.openai_embedding_model,
@@ -85,8 +88,7 @@ class LLMFactory:
     def _require_key(key, *, env_var: str, provider: str) -> str:
         if key is None or not key.get_secret_value():
             raise ConfigurationError(
-                f"{provider} selected but {env_var} is not set. "
-                f"Put it in `.env/variables.env`."
+                f"{provider} selected but {env_var} is not set. Put it in `.env/variables.env`."
             )
         return key.get_secret_value()
 

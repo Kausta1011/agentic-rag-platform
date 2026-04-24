@@ -132,9 +132,7 @@ class OpenAIEmbeddings(EmbeddingProvider):
         if not texts:
             return []
         try:
-            resp = await self._client.embeddings.create(
-                model=self._model, input=list(texts)
-            )
+            resp = await self._client.embeddings.create(model=self._model, input=list(texts))
         except Exception as exc:  # noqa: BLE001
             raise LLMProviderError(f"openai embed failed: {exc}") from exc
         return [d.embedding for d in resp.data]

@@ -36,6 +36,7 @@ class _Histogram:
             if not sorted_samples:
                 return 0.0
             return sorted_samples[int(q * (len(sorted_samples) - 1))]
+
         return {
             "count": self.count,
             "avg_ms": round(avg, 2),

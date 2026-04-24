@@ -68,13 +68,9 @@ class BM25Retriever(BaseRetriever):
         # corpora where a term appears in every document (IDF goes
         # negative and every score becomes ≤ 0 despite the obvious match).
         query_set = set(tokens)
-        ranked = sorted(
-            enumerate(scores), key=lambda pair: pair[1], reverse=True
-        )
+        ranked = sorted(enumerate(scores), key=lambda pair: pair[1], reverse=True)
         kept: list[tuple[int, float]] = [
-            (i, float(s))
-            for i, s in ranked
-            if query_set & set(self._corpus[i])
+            (i, float(s)) for i, s in ranked if query_set & set(self._corpus[i])
         ][:top_k]
 
         if not kept:
